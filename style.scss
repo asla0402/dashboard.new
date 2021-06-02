@@ -7,7 +7,14 @@
 
 /*media for monitor*/
 @mixin media-wide {
-  @media screen and (min-width: 860px) {
+  @media screen and (min-width: 1150px) {
+    @content;
+  }
+}
+
+/*media for beer race on tablet*/
+@mixin media-tablet {
+  @media screen and (min-width: 650px) and (max-width: 1150px) {
     @content;
   }
 }
@@ -33,11 +40,18 @@ body {
 
 /*general styling for phone*/
 .race-body-right img:not(.beer-icon) {
-  max-width: 60px;
+  max-width: 65px;
   box-shadow: 7px 0 10px rgba(0, 0, 0, 0.41);
+  @include media-tablet() {
+    max-width: 80px;
+  }
 
   @include media-small() {
     max-width: 48px;
+  }
+
+  @include media-wide() {
+    max-width: 90px;
   }
 }
 
@@ -45,20 +59,25 @@ body {
   height: 100vh;
   background-color: rgb(12, 12, 12, 0.6);
   padding: 15px 8px 0 8px;
+  overflow: hidden;
 }
 
 .top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #ebdcdc;
+  color: rgb(255, 251, 251);
   margin-top: 3px;
   padding-left: 5px;
 }
 
-.top .wait-time h4 {
+.top > * {
+  flex-basis: 100%;
+}
+
+.top .wait-time {
   font-weight: 400;
-  font-size: 15px;
+  font-size: 18px;
   letter-spacing: 3px;
   font-family: "Roboto", sans-serif;
   position: relative;
@@ -66,34 +85,64 @@ body {
 
 .wait-time-parent {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .wait-time-parent > * {
-  flex-basis: 100%;
-  margin: 4px;
+  @include media-wide() {
+    margin: 10px 10px 5px 5px;
+  }
 }
 
 .queue-icon {
-  width: 25px;
+  width: 35px;
+  margin-right: 4px;
+
+  @include media-tablet() {
+    width: 45px;
+    margin-right: 6px;
+  }
+  @include media-wide() {
+    width: 45px;
+    margin-right: 6px;
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
 }
 
 .top .logo h4 {
-  font-size: 25px;
-  letter-spacing: 4px;
-  font-weight: 500;
+  font-size: 30px;
+  letter-spacing: 5px;
+  font-weight: 400;
   font-family: "Rasa", serif;
   position: relative;
+
+  @include media-wide() {
+    font-size: 2.4rem;
+    margin: 1rem 0 0 1rem;
+  }
+  @include media-tablet() {
+    font-size: 2.4rem;
+    margin: 1rem 0 0 1rem;
+  }
 }
 
 .top .logo h4:before {
   content: "";
   position: absolute;
-  left: 17%;
+  left: 20%;
   top: -2px;
   width: 60%; /* or 100px */
-  border-top: 2px solid rgb(235, 220, 220);
+  border-top: 2px solid rgb(255, 251, 251);
+
+  @include media-wide() {
+    border-top: 3px solid rgb(255, 251, 251);
+    top: -3px;
+  }
 }
 
 .banner {
@@ -124,10 +173,15 @@ body {
 
 .title {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   color: rgb(235, 220, 220);
   margin: 1.7rem 0 1.6rem 0;
   font-size: 1.15em;
+
+  @include media-wide() {
+    font-size: 1.4em;
+    margin: 1em 0 1rem 0;
+  }
 
   @include media-small() {
     font-size: 1em;
@@ -171,7 +225,7 @@ body {
 
   @include media-wide() {
     display: block;
-    width: 60%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -180,19 +234,33 @@ body {
 
 .race-body-right {
   width: 100%;
-  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include media-tablet() {
+    width: 80%;
+  }
 
   @include media-wide() {
-    width: 40%;
+    width: 50%;
   }
 }
 
 .race {
+  min-width: 350px;
+  width: 70%;
   height: 53vh;
   display: flex;
   justify-content: space-around;
   border-bottom: 12px solid #c9802f;
   margin: 0 0.5em 0 0.5em;
+
+  @include media-tablet() {
+    height: 58vh;
+    min-width: 700px;
+  }
 
   @include media-small() {
     height: 48vh;
@@ -213,9 +281,17 @@ body {
   width: 50px;
   box-shadow: 7px 0 10px rgba(0, 0, 0, 0.41);
 
+  @include media-tablet() {
+    width: 60px;
+    margin-top: 1.5rem;
+  }
+
   @include media-small() {
     height: 48vh;
     width: 45px;
+  }
+  @include media-wide() {
+    width: 60px;
   }
 }
 
@@ -224,16 +300,18 @@ body {
 }
 
 .bar2 {
-  height: 20%;
+  min-height: 60px;
 }
 
 .bar3 {
-  height: 14%;
+  min-height: 40px;
 }
 
 .bars-text {
+  min-width: 350px;
+  width: 70%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   color: white;
   font-size: 14px;
   margin: 0.6rem 0 0 0;
@@ -244,6 +322,9 @@ body {
 
   @include media-wide() {
     font-size: 18px;
+  }
+  @include media-tablet() {
+    min-width: 700px;
   }
 }
 
@@ -315,7 +396,7 @@ body {
     width: 11rem;
   }
 }
-
+/*
 footer {
   display: flex;
   justify-content: space-around;
@@ -323,22 +404,76 @@ footer {
   padding: 7px;
   background-color: #1c1c1c;
   color: white;
+}*/
+
+footer {
+  background-color: #1c1c1c;
+  color: white;
+}
+
+.overlay {
   padding: 1.5rem 0.5rem 1.5rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.35) 100%);
 }
 
 li {
   list-style: none;
+  padding: 2px 0;
+}
+
+/* Queue animation */
+#one {
+  animation-name: one;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: relative;
+}
+
+@keyframes one {
+  0% {
+    left: 0;
+    opacity: 100;
+  }
+
+  100% {
+    left: 100px;
+    opacity: 0;
+  }
+}
+
+#three {
+  animation-name: three;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: relative;
+}
+
+@keyframes three {
+  0% {
+    left: 100px;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
 }
 
 /* Venstre side med taps på widescreen */
 
-@media screen and (min-width: 860px) {
+@media screen and (min-width: 1150px) {
   .title-right {
-    width: 40%;
+    width: 50%;
   }
 
   .title-left {
-    width: 60%;
+    width: 50%;
   }
 
   .race-body-left {
@@ -351,39 +486,63 @@ li {
 
   .parent-taps-div {
     display: flex;
-    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .taps-left {
+    display: flex;
+    align-items: center;
   }
 
   .parent-taps-div > * {
-    flex-basis: 100%;
+    padding: 10px;
   }
 
   .taps img {
-    max-width: 100px;
+    max-width: 120px;
+    height: auto;
+    border: solid black 2px;
+    @media screen and (max-width: 1250px) {
+      max-width: 110px;
+    }
   }
+  /*repeat(auto-fill, minmax(210px, 1fr))*/
 
   .beer-taps {
     display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    color: black;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    color: rgb(255, 255, 255);
+    padding: 10px;
+
+    @media screen and (min-width: 1600px) {
+      padding: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    }
   }
 
-  .beer-taps > * {
-    margin: 1.5rem 0 1rem 0;
-    padding: 1rem;
-    border: solid black 2px;
-    background-color: rgb(247, 226, 174);
-    border: solid rgb(0, 0, 0) 3px;
-  }
   .taps-right h2 {
-    font-size: 23px;
+    font-size: 26px;
+    color: #f69335;
     margin-bottom: 0.3em;
     font-family: "Rasa", serif;
+    @media screen and (min-width: 1600px) {
+      font-size: 28px;
+    }
+    @media screen and (max-width: 1250px) {
+      font-size: 22px;
+    }
   }
   .level,
   .capacity {
     font-family: "Roboto", serif;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    @media screen and (max-width: 1250px) {
+      font-size: 15px;
+    }
   }
 
   .taps .level {
