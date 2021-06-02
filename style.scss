@@ -259,7 +259,7 @@ body {
 
   @include media-tablet() {
     height: 58vh;
-    min-width: 700px;
+    max-width: 700px;
   }
 
   @include media-small() {
@@ -324,7 +324,7 @@ body {
     font-size: 18px;
   }
   @include media-tablet() {
-    min-width: 700px;
+    max-width: 700px;
   }
 }
 
@@ -511,7 +511,7 @@ li {
   .beer-taps {
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     color: rgb(255, 255, 255);
     padding: 10px;
 
@@ -522,7 +522,7 @@ li {
   }
 
   .taps-right h2 {
-    font-size: 26px;
+    font-size: 24px;
     color: #f69335;
     margin-bottom: 0.3em;
     font-family: "Rasa", serif;
@@ -536,10 +536,12 @@ li {
   .level,
   .capacity {
     font-family: "Roboto", serif;
-    font-size: 17px;
+    font-size: 16px;
     text-transform: uppercase;
     font-weight: 500;
-
+    @media screen and (min-width: 1600px) {
+      font-size: 17px;
+    }
     @media screen and (max-width: 1250px) {
       font-size: 15px;
     }
