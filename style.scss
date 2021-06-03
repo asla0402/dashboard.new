@@ -189,7 +189,7 @@ body {
   padding: 2rem 0 1rem 0;
 
   @include media-wide() {
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin: 1em 0 1rem 0;
   }
 
@@ -341,7 +341,7 @@ body {
   margin: 0.6rem 0 0 0;
 
   @include media-small() {
-    font-size: 13px;
+    font-size: 11px;
   }
 
   @include media-wide() {
@@ -523,7 +523,6 @@ li {
   .taps-left {
     display: flex;
     align-items: center;
-    background-color: #abaaaa;
   }
 
   .parent-taps-div > * {
@@ -533,12 +532,14 @@ li {
   .taps img {
     max-width: 100px;
     height: auto;
-    border: solid black 2px;
     @media screen and (max-width: 1250px) {
       max-width: 110px;
     }
     @include media-really-lowscreen() {
       max-width: 80px;
+    }
+    @media screen and (max-height: 740px) {
+      max-width: 70px;
     }
   }
   /*repeat(auto-fill, minmax(210px, 1fr))*/
@@ -569,6 +570,10 @@ li {
     @media screen and (max-width: 1250px) {
       font-size: 22px;
     }
+    @media screen and (max-height: 740px) {
+      font-size: 20px;
+      margin-bottom: 0.1em;
+    }
   }
   .level,
   .capacity {
@@ -580,6 +585,9 @@ li {
       font-size: 17px;
     }
     @media screen and (max-width: 1250px) {
+      font-size: 15px;
+    }
+    @media screen and (max-height: 740px) {
       font-size: 15px;
     }
   }
