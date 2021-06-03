@@ -1,6 +1,6 @@
 /*media for small phone*/
 @mixin media-small {
-  @media screen and (max-height: 740px) {
+  @media screen and (max-height: 810px) {
     @content;
   }
 }
@@ -14,7 +14,13 @@
 
 /*media for beer race on tablet*/
 @mixin media-tablet {
-  @media screen and (min-width: 650px) and (max-width: 1150px) {
+  @media screen and (min-width: 850px) and (max-width: 1150px) {
+    @content;
+  }
+}
+
+@mixin media-really-lowscreen {
+  @media screen and (max-height: 900px) {
     @content;
   }
 }
@@ -129,6 +135,10 @@ body {
     font-size: 2.4rem;
     margin: 1rem 0 0 1rem;
   }
+  @include media-really-lowscreen() {
+    font-size: 2rem;
+    margin: 0.5rem 0 0 0.8rem;
+  }
 }
 
 .top .logo h4:before {
@@ -175,17 +185,22 @@ body {
   display: flex;
   align-items: center;
   color: rgb(235, 220, 220);
-  margin: 1.7rem 0 1.6rem 0;
   font-size: 1.15em;
+  padding: 2rem 0 1rem 0;
 
   @include media-wide() {
-    font-size: 1.4em;
+    font-size: 1.5em;
     margin: 1em 0 1rem 0;
+  }
+
+  @include media-tablet() {
+    font-size: 1.2em;
+    padding: 2rem 0 1rem 0;
   }
 
   @include media-small() {
     font-size: 1em;
-    margin: 1em 0 1.4rem 0;
+    padding: 0.5rem 0 0.5rem 0;
   }
 }
 
@@ -217,6 +232,7 @@ body {
 
   @include media-wide() {
     justify-content: space-around;
+    height: 55%;
   }
 }
 
@@ -226,9 +242,14 @@ body {
   @include media-wide() {
     display: block;
     width: 50%;
+    margin-left: 1vw;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  @media screen and (min-width: 1400px) {
+    margin-left: 4vw;
   }
 }
 
@@ -264,6 +285,9 @@ body {
 
   @include media-small() {
     height: 48vh;
+  }
+  @include media-really-lowscreen() {
+    height: 50vh;
   }
 }
 
@@ -325,6 +349,10 @@ body {
   }
   @include media-tablet() {
     max-width: 700px;
+    font-size: 19px;
+  }
+  @media screen and (min-width: 1150px) and (max-width: 1250px) {
+    font-size: 15px;
   }
 }
 
@@ -369,13 +397,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4vh;
+  margin-top: 5vh;
   margin-bottom: 2vh;
   @include media-wide() {
     display: none;
   }
   @include media-small() {
-    margin-top: 2vh;
+    margin-top: 4vh;
+  }
+  @include media-really-lowscreen() {
+    margin-top: 5vh;
   }
 }
 
@@ -492,6 +523,7 @@ li {
   .taps-left {
     display: flex;
     align-items: center;
+    background-color: #abaaaa;
   }
 
   .parent-taps-div > * {
@@ -499,11 +531,14 @@ li {
   }
 
   .taps img {
-    max-width: 120px;
+    max-width: 100px;
     height: auto;
     border: solid black 2px;
     @media screen and (max-width: 1250px) {
       max-width: 110px;
+    }
+    @include media-really-lowscreen() {
+      max-width: 80px;
     }
   }
   /*repeat(auto-fill, minmax(210px, 1fr))*/
@@ -514,15 +549,17 @@ li {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     color: rgb(255, 255, 255);
     padding: 10px;
+    max-width: 900px;
 
     @media screen and (min-width: 1600px) {
       padding: 20px;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      grid-template-columns: repeat(2, minmax(290px, 1fr));
+      grid-gap: 1rem;
     }
   }
 
   .taps-right h2 {
-    font-size: 24px;
+    font-size: 22px;
     color: #f69335;
     margin-bottom: 0.3em;
     font-family: "Rasa", serif;
@@ -548,6 +585,6 @@ li {
   }
 
   .taps .level {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
 }

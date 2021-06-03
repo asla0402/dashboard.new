@@ -164,7 +164,7 @@ function isItWeekend(weekend) {
   if(weekend === false) {
     document.querySelector(".banner-text").textContent = "Every fifth beer you buy is on us";
   } else {
-    document.querySelector(".banner-text").textContent = "Try our new beer Github";
+    document.querySelector(".banner-text").textContent = "Try our new beer GitHop";
   }
   //const bool = weekend([208])
   // will log `true` if it's Saturday or Sunday
