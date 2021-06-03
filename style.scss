@@ -25,6 +25,9 @@
   }
 }
 
+$accent-orange: #f69335;
+$white-text: #ffffff;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -72,7 +75,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgb(255, 251, 251);
+  color: $white-text;
   margin-top: 3px;
   padding-left: 5px;
 }
@@ -147,10 +150,10 @@ body {
   left: 20%;
   top: -2px;
   width: 60%; /* or 100px */
-  border-top: 2px solid rgb(255, 251, 251);
+  border-top: 2px solid #ffffff;
 
   @include media-wide() {
-    border-top: 3px solid rgb(255, 251, 251);
+    border-top: 3px solid #ffffff;
     top: -3px;
   }
 }
@@ -336,7 +339,7 @@ body {
   width: 70%;
   display: flex;
   justify-content: space-around;
-  color: white;
+  color: $white-text;
   font-size: 14px;
   margin: 0.6rem 0 0 0;
 
@@ -411,7 +414,7 @@ body {
 }
 
 .button {
-  background: #f69335;
+  background-color: $accent-orange;
   border: 3px solid #ffffff;
   padding: 0.5em;
   box-sizing: border-box;
@@ -439,7 +442,7 @@ footer {
 
 footer {
   background-color: #1c1c1c;
-  color: white;
+  color: $white-text;
 }
 
 .overlay {
@@ -548,7 +551,7 @@ li {
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    color: rgb(255, 255, 255);
+    color: $white-text;
     padding: 10px;
     max-width: 900px;
 
@@ -561,7 +564,7 @@ li {
 
   .taps-right h2 {
     font-size: 22px;
-    color: #f69335;
+    color: $accent-orange;
     margin-bottom: 0.3em;
     font-family: "Rasa", serif;
     @media screen and (min-width: 1600px) {
